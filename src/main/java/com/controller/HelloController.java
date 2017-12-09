@@ -1,8 +1,10 @@
 package com.controller;
 
 import com.model.SanPham;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -24,5 +26,10 @@ public class HelloController {
         sanPhams.add(new SanPham("ten3", "masp3", 102));
         modelMap.put("dsSanPham",sanPhams);
         return "xinchao";
+    }
+    @RequestMapping(value = "/hienthi/{noidung}",method = RequestMethod.GET)
+    public String hienthi(@PathVariable (value = "noidung")String noidung, ModelMap modelMap){
+        modelMap.put("noidung",noidung);
+        return "hienthi";
     }
 }
